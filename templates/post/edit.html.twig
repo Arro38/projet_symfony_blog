@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Editer un Post
+{% endblock %}
+
+{% block body %}
+	<h1>Editer Post</h1>
+
+	{{ include('post/_form.html.twig', {'button_label': 'Sauvegarder'}) }}
+
+	<a href="{{ path('app_post_index') }}">Retour</a>
+
+	{{ include('post/_delete_form.html.twig') }}
+{% endblock %}

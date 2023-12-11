@@ -1,0 +1,87 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil
+{% endblock %}
+
+{% block body %}
+	<script>
+		function onEditComment(id) {
+var p = document.getElementById("p-comment-" + id);
+var f = document.getElementById("form-comment-" + id);
+p.style.display = "none";
+f.style.display = "block";
+}
+	</script>
+
+	<div class="d-flex flex-column  justify-content-center gap-3">
+
+
+		{% for post in posts %}
+
+			<div class="card border-primary mb-3">
+				<div class="card-header">{{ post.user.email }}</div>
+
+				<div class="card-body">
+					<h4 class="card-title">{{ post.content }}
+						{% if post.user is same as (app.user) %}
+							<small class="d-flex gap-2 mt-2">
+								<a class=" btn btn-secondary" href="{{ path('app_post_edit', {'id': post.id}) }}">Editer</a>
+								{{ include('post/_delete_form.html.twig') }}
+							</small>
+						{% endif %}
+					</h4>
+
+
+					<p class="card-text">
+						<div class="form-group">
+							<span class="col-form-label col-form-label-lg mt-2" for="inputLarge">Commentaires</span>
+							{% if app.user %}
+								<form action="{{ path('app_comment_new') }}" method="POST" id="new_comment_form_{{ post.id}}">
+
+									<input type="text" class="form-control form-control-lg" name="content">
+									<input type="hidden" name="postid" value="{{ post.id }}">
+									<button type="submit" class="btn btn-primary mt-2">Commenter</button>
+								</form>
+							{% endif %}
+							{% for comment in post.comments %}
+								<div class="card my-4">
+									<div class="card-body">
+										<p id="p-comment-{{comment.id}}">{{comment.content}}</p>
+										<form id="form-comment-{{comment.id}}" action="{{ path('app_comment_edit', {'id': comment.id} ) }}" method="POST" style="display:none">
+											<input value="{{comment.content}}" name="content">
+											<button type="submit" class="btn btn-primary mt-2">Envoyer</button>
+										</form>
+
+										<div class="d-flex justify-content-between">
+											<div class="d-flex flex-row align-items-center">
+												<p class="small mb-0 ms-2">{{comment.user.email}}</p>
+											</div>
+											{% if comment.user is same as (app.user) %}
+												<div class="d-flex flex-row align-items-center">
+													<p class="small text-muted mb-0">
+														<a class="btn btn-secondary mx-2" onclick="onEditComment({{comment.id}})">Editer</a>
+														{{ include('comment/_delete_form.html.twig') }}
+													</p>
+												</div>
+											{% endif %}
+										</div>
+									</div>
+								</div>
+
+
+							{% endfor %}
+
+						</div>
+
+					</p>
+				</p>
+			</div>
+		</div>
+
+	{% else %}
+		<h3>
+			Pas de post
+		</h3>
+	{% endfor %}
+
+</div>{% endblock %}
