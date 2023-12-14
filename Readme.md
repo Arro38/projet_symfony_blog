@@ -1,37 +1,38 @@
-# LadyLaFé Blog
+# README - Projet Blog Symfony 7 avec Bootstrap 5
 
-Ce projet est un blog développé avec Symfony 7. Il permet aux utilisateurs de publier des articles et de les commenter.
-
-## Installation
-
-1. Clonez ce dépôt sur votre machine locale.
-2. Assurez-vous d'avoir PHP et Composer installés.
-3. Exécutez la commande `composer install` pour installer les dépendances.
-4. Configurez votre base de données dans le fichier `.env`.
-5. Exécutez les migrations avec la commande `php bin/console doctrine:migrations:migrate`.
-6. Lancez le serveur de développement avec la commande `symfony serve`.
+## Introduction
+Ce projet est un blog développé avec Symfony 7, intégrant Bootstrap 5 pour le design. Il permet aux utilisateurs de lire des articles et des commentaires de manière anonyme. Les utilisateurs enregistrés peuvent créer, éditer et supprimer leurs propres commentaires et articles.
 
 ## Fonctionnalités
+- **Lecture anonyme** : Les visiteurs peuvent lire tous les articles et commentaires sans se connecter.
+- **Gestion des articles** : Les utilisateurs peuvent créer, éditer et supprimer leurs articles.
+- **Gestion des commentaires** : Les utilisateurs peuvent ajouter, éditer et supprimer leurs commentaires sur les articles.
 
-- Affichage de la liste des articles triées par leur date de mis à jour (du plus récent au plus ancien).
-- Création, édition et suppression d'articles.
-- Système de commentaires pour chaque article.
-- Gestion des droits en fonction du propriétaire de l'article/commentaire.
+## Installation
+1. Assurez-vous d'avoir PHP 8.2 et Composer installés.
+2. Clonez le dépôt du projet.
+3. Exécutez `composer install` pour installer les dépendances Symfony.
+4. Configurez votre base de données dans `.env`.
+5. Exécutez `php bin/console doctrine:migrations:migrate` pour créer les tables nécessaires.
 
-## Contribuer
+## Démarrage du projet
+- Utilisez `symfony server:start` pour démarrer le serveur de développement.
+- Accédez à `http://localhost:8000` pour visualiser l'application.
 
-Les contributions sont les bienvenues! Si vous souhaitez contribuer à ce projet, veuillez suivre les étapes suivantes :
+## Structure de la page d'accueil
+- **Liste des articles** : Affiche les articles avec les commentaires correspondants.
+- **Fonctionnalité d'édition de commentaire** : Permet aux utilisateurs de modifier leurs commentaires directement sur la page.
 
-1. Fork ce dépôt.
-2. Créez une branche pour votre fonctionnalité (`git checkout -b nouvelle-fonctionnalite`).
-3. Faites vos modifications et commit (`git commit -m "Ajout d'une nouvelle fonctionnalité"`).
-4. Push vers la branche (`git push origin nouvelle-fonctionnalite`).
-5. Ouvrez une pull request.
+## Technologies utilisées
+- **Symfony 7** : Pour le backend et la logique métier.
+- **Bootstrap 5** : Pour le design responsive et moderne.
+- **Twig** : Pour le templating.
+
+## Contribution
+Les contributions sont encouragées. Veuillez suivre les normes de codage de Symfony et soumettre des pull requests pour toute proposition de modification ou d'amélioration.
 
 ## Licence
-
-Ce projet est sous licence MIT. Veuillez consulter le fichier [LICENSE](./LICENSE) pour plus d'informations.
+Ce projet est la propriété exclusive de son auteur et ne peut être réutilisé, copié, modifié ou distribué sans autorisation préalable. Tous les droits sont réservés.
 
 ## Contact
-
-Si vous avez des questions ou des suggestions, n'hésitez pas à nous contacter à contact@formaterz.fr.
+Pour toute question ou demande d'assistance, veuillez contacter le développeur du projet.
